@@ -68,10 +68,10 @@ halt 0
 And you want to assemble it, simply run:
 
 
-`python assembler test.instr`
+`python assembler add.instr`
 
 
-and it will output a file `test.instr.asm` which contains your assembled file.
+and it will output a file `add.instr.asm` which contains your assembled file.
 
 
 You can specify the output filename with `-o <filename>`.
