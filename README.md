@@ -12,6 +12,8 @@ https://github.com/DavidHargat/LogisimCpu
 
 `git clone https://github.com/DavidHargat/CVM`
 
+`cd CVM`
+
 `make`
 
 `./cvm <filename>`
