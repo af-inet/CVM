@@ -1,6 +1,11 @@
 #ifndef READFILE_H
 #define READFILE_H
 
-char *readfile(char *filename);
+struct FileBuffer{
+	char *data;
+	int size;
+};
+
+struct FileBuffer *readfile(char *filename);
 
 #endif

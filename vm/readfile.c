@@ -3,15 +3,19 @@
 
 #include "readfile.h"
 
-char *readfile(char *filename){
-	char * buffer = 0;
+struct FileBuffer *readfile(char *filename){
+	
+	struct FileBuffer *fb; 
+	fb = malloc(sizeof(*fb));
+	
+	char *buffer = 0;
 	long length;
 	FILE * f = fopen (filename, "r");
 	if(f==NULL) return NULL;
 
 	int result = 0;
 
-	if( f )
+	if(f)
 	{
 		result = fseek(f, 0, SEEK_END);
 		if(result==-1) return NULL;
@@ -30,8 +34,12 @@ char *readfile(char *filename){
 		fclose (f);
 	}
 
-	if(buffer)
-		return buffer;
-	else
+	if(buffer){
+		fb->data = buffer;
+		fb->size = length;
+		return fb;
+	}else{
 		return NULL;
+	}
 }
+

@@ -2,3 +2,5 @@
 test.cpu
 test.cpu.asm
 cvm
+vm/main.o
+vm/readfile.o

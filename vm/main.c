@@ -33,28 +33,6 @@ void setv(char v) { MEMORY[POINTER] = v;}
 void ptra(char v) { POINTER = MEMORY[v];}
 void ptrv(char v) { POINTER = v;}
 
-// TESTING
-void prnt(char v){
-	printf("[CVM] %d::%d\n", v, MEMORY[v]);
-}
-
-void dump(char height){
-	int x,y;
-	
-	printf("%s\n","[CMV] \nDUMP\n");
-	
-	printf("POINTER = %d\n", POINTER);
-
-	printf("MEMORY = \n");
-
-	for(x=0;x<height;x++){
-		for(y=0;y<16;y++){
-			printf("%d ",MEMORY[y+(x*16)]);
-		}
-		printf("\n");
-	}
-}
-
 void interpret(){
 	char ins = PROGRAM[INST];
 	char val = PROGRAM[INST+1];
@@ -81,44 +59,66 @@ void run(){
 	}
 }
 
-void load(){
-	
-	char p[256] = {
-		// Variables
-		PTRV, 0, SETV, 9,
-		PTRV, 1, SETV, 6, 
-
-		// Temps
-		PTRV, 2, SETA, 0,
-		PTRV, 3, SETA, 1,
-
-		// If Temp=0, goto end
-		JMPI, 15,
-			PTRV, 3, SUBV, 1,
-			PTRV, 0, ADDA, 2,
-			PTRV, 3,
-		JMPV, 8,
-
-		// Clear Temp Variables
-		PTRV, 2, SETV, 0,
-		PTRV, 1, SETV, 0,
-
-		// End
-		HALT, 0	
-	};
-
-	int i;
-	for(i=0;i<256;i++){
-		PROGRAM[i] = p[i];
+void load_program(char *buffer, int length){
+	if(length < 256){
+		int i;
+		for(i=0;i<length;i++){
+			PROGRAM[i] = buffer[i];
+		}
+	}else{
+		printf("[!] assembly file exceeds maximum length [256].\n");
 	}
+}
 
+// TESTING
+void prnt(char v){
+	printf("[CVM] %d::%d\n", v, MEMORY[v]);
+}
+
+void dump(char height){
+	int x,y;
+	
+	printf("%s\n","[CMV] \nDUMP\n");
+	
+	printf("POINTER = %d\n", POINTER);
+
+	printf("MEMORY = \n");
+
+	for(x=0;x<height;x++){
+		for(y=0;y<16;y++){
+			printf("%d ",MEMORY[y+(x*16)]);
+		}
+		printf("\n");
+	}
+}
+
+char *parse_args(char argc, char **argv){
+	if(argc>=1){	
+		char *arg_filename = argv[1];
+		return arg_filename;
+	}else{
+		return NULL;
+	}
 }
 
 int main(char argc, char **argv){	
+	char *filename = parse_args(argc,argv);
+	
+	if(filename==NULL){
+		printf("Usage: cvm <filename>\n");
+		return 0;
+	}
 
-	load();
+	struct FileBuffer *fb = readfile(filename);
+
+	if(fb==NULL){
+		printf("Could not open file: '%s'\n",filename);
+		return 0;
+	}
+	
+	load_program(fb->data,fb->size);
 	run();
-	dump(1);
+	dump(2);
 
 	return 0;
 }
