@@ -1,1 +1,4 @@
 /build
+test.cpu
+test.cpu.asm
+cvm

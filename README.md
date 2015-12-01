@@ -6,6 +6,16 @@ A virtual machine which emulates my WIP CPU
 
 https://github.com/DavidHargat/LogisimCpu
 
+### clone/build/run
+
+**NOTE: cvm does not accept input files yet**
+
+`git clone https://github.com/DavidHargat/CVM`
+
+`make`
+
+`./cvm <filename>`
+
 ## Instruction Set
 
 
