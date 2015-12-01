@@ -5,12 +5,23 @@ from instruction import str_to_value
 class Parser():
     # Converts a string to and Instruction
     def line_to_instruction(self,s):    
-        if s == "\n":
+        
+        # Conversion
+        
+        # remove endline
+        words = s.replace("\n","")
+        
+        # shave off comments
+        if ";" in words:
+            words = words.split(";")[0]    
+        
+        words = words.split(" ")
+        
+        # ignore lines with less than 2 words
+        if len(words)<2:
             return None
 
-        # Conversion
-        words = s.replace("\n","").split(" ")
-	str_name  = words[0].lower()
+        str_name  = words[0].lower()
         str_value = words[1]
         num_name  = str_to_name(str_name)
         num_value = str_to_value(str_value)
