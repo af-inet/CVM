@@ -26,7 +26,7 @@ def parse_args():
     
     return args
 
-def main(): 
+def __main__(): 
     args = parse_args()
     
     if args.output is None:
@@ -38,4 +38,4 @@ def main():
     asm = Assembler()
     asm.assemble(f_input,f_output)
 
-main()
+__main__()
