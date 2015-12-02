@@ -12,8 +12,9 @@ enum CODES{
 char PROGRAM[256];
 char MEMORY[256];
 char POINTER = 0;
-char INST = 0;
+char INST    = 0;
 char RUNNING = 1;
+int  CYCLES  = 0;
 
 // Maths
 void adda(char v) { MEMORY[POINTER] += MEMORY[v];}
@@ -55,6 +56,7 @@ void interpret(){
 
 void run(){
 	while(RUNNING){
+		CYCLES = CYCLES + 1;
 		interpret();
 	}
 }
@@ -83,6 +85,8 @@ void dump(char height){
 	printf("POINTER = %d\n", POINTER);
 
 	printf("MEMORY = \n");
+
+	printf("CYCLES = %d\n",CYCLES);
 
 	for(x=0;x<height;x++){
 		for(y=0;y<16;y++){

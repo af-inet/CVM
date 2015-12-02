@@ -1,7 +1,9 @@
 /build
-test.cpu
-test.cpu.asm
 cvm
 vm/main.o
 vm/readfile.o
 *.pyc
+*.asm
+*.ins
+test
+envs

@@ -22,8 +22,9 @@ def parse_args():
         default=None
     )
 
+
     args = parser.parse_args()
-    
+
     return args
 
 def __main__(): 
