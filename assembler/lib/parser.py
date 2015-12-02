@@ -76,11 +76,11 @@ class Parser():
 	# to a list of Instructions
 	def lines_to_assembly(self,lines):
 		instr_list = []
-		print(lines)
+		
 		lines = self.split_comma(lines)
 		lines = self.remove_trailing_spaces(lines)
 		lines = self.clean_lines(lines)
-		print(lines)
+		
 		for line in lines:
 			instr = self.line_to_instruction(line)
 			if instr is not None:
