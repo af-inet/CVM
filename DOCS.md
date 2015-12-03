@@ -69,6 +69,8 @@ ADDA 1                 ; +=*[1]  ; (add [address 1] to cell 2)
 ```
 
 **Visualization**
+
+
 |-|-|-|-|-|-|
 |-                    |  -|  -|  -|  -|  -|
 |**PTRV 0**|          |   |   |   |   |
