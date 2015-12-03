@@ -69,28 +69,28 @@ ADDA 1                 ; +=*[1]  ; (add [address 1] to cell 2)
 ```
 
 **Visualization**
-|||||||
 |-|-|-|-|-|-|
-|**PTRV 0**||||||
+|-                    |  -|  -|  -|  -|  -|
+|**PTRV 0**|          |   |   |   |   |
 | Memory Pointer      | **V** |   |   |   |   |
 | Memory              | 0 | 0 | 0 | 0 | 0 |
-|  **SETV 2**|        |   |   |   |   |   |
+|  **SETV 2**         |   |   |   |   |   |
 | Memory Pointer      | **V** |   |   |   |   |
 | Memory              | 2 | 0 | 0 | 0 | 0 |
-| **PTRV 1**|         |   |   |   |   |   |
+| **PTRV 1**          |   |   |   |   |   |
 | Memory Pointer      |   | **V** |   |   |   |
 | Memory              | 2 | 0 | 0 | 0 | 0 |
-| **SETV 3**|         |   |   |   |   |   |
+| **SETV 3**          |   |   |   |   |   |
 | Memory Pointer      |   | **V** |   |   |   |
 | Memory              | 2 | 3 | 0 | 0 | 0 |
-| **PTRV 2**|         |   |   |   |   |   |
-| Memory Pointer      |   |    | **V** |   |   |
+| **PTRV 2**          |   |   |   |   |   |
+| Memory Pointer      |   |   | **V** |   |   |
 | Memory              | 2 | 3 | 0 | 0 | 0 |
-| **ADDA 0**|         |   |   |   |   |   |
-| Memory Pointer      |   |    | **V** |   |   |
+| **ADDA 0**          |   |   |   |   |   |
+| Memory Pointer      |   |   | **V** |   |   |
 | Memory              | 2 | 3 | 2 | 0 | 0 |
-| **ADDA 1**|         |   |   |   |   |   |
-| Memory Pointer      |   |    | **V** |   |   |
+| **ADDA 1**          |   |   |   |   |   |
+| Memory Pointer      |   |   | **V** |   |   |
 | Memory              | 2 | 3 | 5 | 0 | 0 |
 
 
