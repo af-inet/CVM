@@ -71,9 +71,9 @@ ADDA 1                 ; +=*[1]  ; (add [address 1] to cell 2)
 **Visualization**
 
 
-|-|-|-|-|-|-|
 |-                    |  -|  -|  -|  -|  -|
-|**PTRV 0**|          |   |   |   |   |
+|-                    |  -|  -|  -|  -|  -|
+|**PTRV 0**           |   |   |   |   |   |
 | Memory Pointer      | **V** |   |   |   |   |
 | Memory              | 0 | 0 | 0 | 0 | 0 |
 |  **SETV 2**         |   |   |   |   |   |
@@ -94,15 +94,4 @@ ADDA 1                 ; +=*[1]  ; (add [address 1] to cell 2)
 | **ADDA 1**          |   |   |   |   |   |
 | Memory Pointer      |   |   | **V** |   |   |
 | Memory              | 2 | 3 | 5 | 0 | 0 |
-
-
-
-
-
-
-
-
-
----
-
 
