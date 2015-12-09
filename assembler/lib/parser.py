@@ -14,9 +14,7 @@ class Parser():
 		# remove endline
 		words = s.replace("\n","")
 		
-		# shave off comments
-		if ";" in words:
-			words = words.split(";")[0]	
+			
 		
 		words = words.split(" ")
 		
@@ -67,9 +65,42 @@ class Parser():
 
 			line = line.replace("\n","")
 			line = line.replace("	","")			
-
+			
+			# shave off comments
+			if ";" in line:
+				line = line.split(";")[0]
+			
 			if len(line)>1:
 				result.append(line)
+		return result
+	
+	def assign_labels(self, lines):
+		temp = []
+		
+		label_dict = {}
+
+		i=0
+		for line in lines:		
+			# assign labels
+			if ":" in line:
+				name = line.split(":")[1]
+				value = label_dict.get(name)
+				if value == None:
+					label_dict[name] = i	
+			else:
+				i = i + 1
+				temp.append(line)
+
+		result = []
+
+		for line in temp:
+			# replace labels
+			for lbl in label_dict.keys():
+				s = str(lbl)
+				if s==line.split(" ")[1]:
+					line = line.replace(s,str(label_dict[lbl]))
+			result.append(line)
+
 		return result
 
 	# Converts a list of strings
@@ -80,12 +111,14 @@ class Parser():
 		lines = self.split_comma(lines)
 		lines = self.remove_trailing_spaces(lines)
 		lines = self.clean_lines(lines)
+		lines = self.assign_labels(lines)
 		
+		i=0
 		for line in lines:
 			instr = self.line_to_instruction(line)
 			if instr is not None:
 				instr_list.append(instr)
-
+				i = i + 1	
 		return instr_list
 
 	# Converts a list of instructions
