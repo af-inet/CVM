@@ -10,7 +10,7 @@ Documentation of the CVM instruction set.
 
 - 8 General Registers
 
-- 256 word RAM
+- RAM (16 bit address space, 65536 words)
 
 - Memory Mapped I/O
 
