@@ -12,10 +12,7 @@ class Parser():
 		# Conversion
 		
 		# remove endline
-		words = s.replace("\n","")
-		
-			
-		
+		words = s.replace("\n","")		
 		words = words.split(" ")
 		
 		# ignore lines with less than 2 words

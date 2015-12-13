@@ -1,18 +1,20 @@
 
 # For converting from Instruction bytes to names.
 instr_list = [
-    "halt",
-    "adda",
-    "addv",
-    "suba",
-    "subv",
-    "jmpa",
-    "jmpv",
-    "jmpi",
-    "seta",
-    "setv",
-    "ptra",
-    "ptrv"
+	"halt",
+	"adda",
+	"addv",
+	"suba",
+	"subv",
+	"jmpa",
+	"jmpv",
+	"jmpi",
+	"seta",
+	"setv",
+	"ptra",
+	"ptrv",
+	"load",
+	"stor" 
 ]
 
 # For Instruction names to bytes
@@ -28,25 +30,27 @@ instr_map = {
 	"seta":0x8,
 	"setv":0x9,
 	"ptra":0xA,
-	"ptrv":0xB
+	"ptrv":0xB,
+	"load":0xC,
+	"stor":0xD
 }
 
 # Instruction Model
 class Instruction():
-    def __init__(self,name,value):
-        self.name  = name
-        self.value = value
+	 def __init__(self,name,value):
+		  self.name  = name
+		  self.value = value
 
 def str_to_name(s):
-    return instr_map.get(s)
+	 return instr_map.get(s)
 
 def str_to_value(s):
-    try:
-        num = int(s)
-        return num
-    except:
-        return None
+	 try:
+		  num = int(s)
+		  return num
+	 except:
+		  return None
 
 def num_to_str(n):
-    return instr_list[n]
+	 return instr_list[n]
 
