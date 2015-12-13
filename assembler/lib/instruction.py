@@ -14,7 +14,9 @@ instr_list = [
 	"ptra",
 	"ptrv",
 	"load",
-	"stor" 
+	"stor",
+	"mulv",
+	"mula" 
 ]
 
 # For Instruction names to bytes
@@ -32,7 +34,9 @@ instr_map = {
 	"ptra":0xA,
 	"ptrv":0xB,
 	"load":0xC,
-	"stor":0xD
+	"stor":0xD,
+	"mulv":0xE,
+	"mula":0xF
 }
 
 # Instruction Model

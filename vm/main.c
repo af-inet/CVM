@@ -1,23 +1,25 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdint.h>
 
 #include "readfile.h"
 
 enum CODES{
 	HALT,ADDA,ADDV,SUBA,SUBV,JMPA,
 	JMPV,JMPI,SETA,SETV,PTRA,PTRV,
-	LOAD,STOR		
+	LOAD,STOR,MULV,MULA	
 };
 
 // STATE
-char PROGRAM[256];
+int16_t PROGRAM[256];
+int16_t REGISTER[8];
+int16_t RAM[256];
+int16_t POINTER = 0;
+int16_t INST    = 0;
 
-char REGISTER[8];
-char RAM[256];
-
-char POINTER = 0;
-char INST    = 0;
 char RUNNING = 1;
+
+// Cycle Counter (not part of architecture model)
 int  CYCLES  = 0;
 
 // Maths
@@ -25,6 +27,8 @@ void adda(char v) { REGISTER[POINTER] += REGISTER[v];}
 void addv(char v) { REGISTER[POINTER] += v;}
 void suba(char v) { REGISTER[POINTER] -= REGISTER[v];}
 void subv(char v) { REGISTER[POINTER] -= v;}
+void mulv(char v) { REGISTER[POINTER] *= v;}
+void mula(char v) { REGISTER[POINTER] *= REGISTER[v];}
 
 // Jumps
 void jmpv(char v) { INST = ((v-1)*2);}
@@ -64,6 +68,8 @@ void interpret(){
 	if( ins == SETV ) setv(val);
 	if( ins == LOAD ) load(val);
 	if( ins == STOR ) stor(val);
+	if( ins == MULV ) mulv(val);
+	if( ins == MULA ) mula(val);
 
 	INST += 2;
 }
